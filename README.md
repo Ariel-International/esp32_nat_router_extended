@@ -6,6 +6,19 @@ This is a firmware to use the ESP32 as WiFi NAT router. It can be used as
 
 This is an extension of the great work of [martin-ger's ESP32 NAT Router-project](https://github.com/martin-ger/esp32_nat_router). I used his project as a starting point for learning microcontroller programming and extended it with some features for my use case. 
 
+NOTE
+19/05/2023
+For each board the following properties need to be enabled:
+    *Component config -> LWIP > [x] Enable copy between Layer2 and Layer3 packets.
+    *Component config -> LWIP > [x] Enable IP forwarding.
+    *Component config -> LWIP > [x] Enable NAT (new/experimental).
+    Use Run Menuconfig in PlatformIO to configure
+
+httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long
+    *Component config -> HTTPD_MAX_REQ_HDR_LEN (Default 512)
+    *Component config -> HTTPD_MAX_URI_LEN (Default 512)
+
+
 ## Features / Usage scenarios
 - Extend range of WiFi network (Repeater)
 - Additional network for guests
